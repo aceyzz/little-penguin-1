@@ -1,0 +1,425 @@
+[Sat Oct 25 14:52:51 2025] Booting Linux on physical CPU 0x0000000000 [0x610f0000]
+[Sat Oct 25 14:52:51 2025] Linux version 6.18.0-rc2-00236-g566771afc7a8 (root@cedmulle) (gcc (GCC) 15.2.0, GNU ld (GNU Binutils) 2.45) #1 SMP PREEMPT Sat Oct 25 14:44:45 CEST 2025
+[Sat Oct 25 14:52:51 2025] KASLR enabled
+[Sat Oct 25 14:52:51 2025] printk: debug: ignoring loglevel setting.
+[Sat Oct 25 14:52:51 2025] efi: EFI v2.7 by EDK II
+[Sat Oct 25 14:52:51 2025] efi: SMBIOS 3.0=0x23f810000 MEMATTR=0x23e801018 ACPI 2.0=0x23c150018 RNG=0x23c15e698 MEMRESERVE=0x23c483d98 
+[Sat Oct 25 14:52:51 2025] random: crng init done
+[Sat Oct 25 14:52:51 2025] ACPI: Early table checksum verification disabled
+[Sat Oct 25 14:52:51 2025] ACPI: RSDP 0x000000023C150018 000024 (v02 BOCHS )
+[Sat Oct 25 14:52:51 2025] ACPI: XSDT 0x000000023C15FE98 00006C (v01 BOCHS  BXPC     00000001      01000013)
+[Sat Oct 25 14:52:51 2025] ACPI: FACP 0x000000023C15FA98 000114 (v06 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: DSDT 0x000000023C157518 0014A2 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: APIC 0x000000023C15FC18 00019C (v04 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: PPTT 0x000000023C15D898 000088 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: GTDT 0x000000023C15E818 000068 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: MCFG 0x000000023C15E918 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: SPCR 0x000000023C15FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: DBG2 0x000000023C15E418 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: IORT 0x000000023C15E718 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[Sat Oct 25 14:52:51 2025] ACPI: BGRT 0x000000023C15E498 000038 (v01 INTEL  EDK2     00000002      01000013)
+[Sat Oct 25 14:52:51 2025] ACPI: SPCR: console: pl011,mmio32,0x9000000,1818326128
+[Sat Oct 25 14:52:51 2025] ACPI: Use ACPI SPCR as default console: No
+[Sat Oct 25 14:52:51 2025] NUMA: Faking a node at [mem 0x0000000040000000-0x000000023fffffff]
+[Sat Oct 25 14:52:51 2025] NODE_DATA(0) allocated [mem 0x23ee53980-0x23ee55fff]
+[Sat Oct 25 14:52:51 2025] Zone ranges:
+[Sat Oct 25 14:52:51 2025]   DMA      [mem 0x0000000040000000-0x00000000ffffffff]
+[Sat Oct 25 14:52:51 2025]   DMA32    empty
+[Sat Oct 25 14:52:51 2025]   Normal   [mem 0x0000000100000000-0x000000023fffffff]
+[Sat Oct 25 14:52:51 2025] Movable zone start for each node
+[Sat Oct 25 14:52:51 2025] Early memory node ranges
+[Sat Oct 25 14:52:51 2025]   node   0: [mem 0x0000000040000000-0x000000023c15ffff]
+[Sat Oct 25 14:52:51 2025]   node   0: [mem 0x000000023c160000-0x000000023c47ffff]
+[Sat Oct 25 14:52:51 2025]   node   0: [mem 0x000000023c480000-0x000000023f75ffff]
+[Sat Oct 25 14:52:51 2025]   node   0: [mem 0x000000023f760000-0x000000023f7effff]
+[Sat Oct 25 14:52:51 2025]   node   0: [mem 0x000000023f7f0000-0x000000023f7fffff]
+[Sat Oct 25 14:52:51 2025]   node   0: [mem 0x000000023f800000-0x000000023f91ffff]
+[Sat Oct 25 14:52:51 2025]   node   0: [mem 0x000000023f920000-0x000000023fffffff]
+[Sat Oct 25 14:52:51 2025] Initmem setup node 0 [mem 0x0000000040000000-0x000000023fffffff]
+[Sat Oct 25 14:52:51 2025] cma: Reserved 32 MiB at 0x00000000fe000000
+[Sat Oct 25 14:52:51 2025] psci: probing for conduit method from ACPI.
+[Sat Oct 25 14:52:51 2025] psci: PSCIv1.1 detected in firmware.
+[Sat Oct 25 14:52:51 2025] psci: Using standard PSCI v0.2 function IDs
+[Sat Oct 25 14:52:51 2025] psci: Trusted OS migration not required
+[Sat Oct 25 14:52:51 2025] psci: SMC Calling Convention v1.0
+[Sat Oct 25 14:52:51 2025] percpu: Embedded 25 pages/cpu s62872 r8192 d31336 u102400
+[Sat Oct 25 14:52:51 2025] pcpu-alloc: s62872 r8192 d31336 u102400 alloc=25*4096
+[Sat Oct 25 14:52:51 2025] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[Sat Oct 25 14:52:51 2025] Detected PIPT I-cache on CPU0
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Address authentication (IMP DEF algorithm)
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Spectre-v4
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Spectre-BHB
+[Sat Oct 25 14:52:51 2025] alternatives: applying boot alternatives
+[Sat Oct 25 14:52:51 2025] Kernel command line: BOOT_IMAGE=/Image-6.18.0-rc2-00236-g566771afc7a8 root=PARTUUID=557f28c8-5006-6f4a-b73d-eb11e6468a1d ro console=tty1 console=ttyAMA0 earlyprintk=efi,keep ignore_loglevel
+[Sat Oct 25 14:52:51 2025] Unknown kernel command line parameters "earlyprintk=efi,keep", will be passed to user space.
+[Sat Oct 25 14:52:51 2025] printk: log buffer data + meta data: 131072 + 458752 = 589824 bytes
+[Sat Oct 25 14:52:51 2025] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[Sat Oct 25 14:52:51 2025] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[Sat Oct 25 14:52:51 2025] software IO TLB: area num 4.
+[Sat Oct 25 14:52:51 2025] software IO TLB: mapped [mem 0x00000000fa000000-0x00000000fe000000] (64MB)
+[Sat Oct 25 14:52:51 2025] Fallback order for Node 0: 0 
+[Sat Oct 25 14:52:51 2025] Built 1 zonelists, mobility grouping on.  Total pages: 2097152
+[Sat Oct 25 14:52:51 2025] Policy zone: Normal
+[Sat Oct 25 14:52:51 2025] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[Sat Oct 25 14:52:51 2025] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[Sat Oct 25 14:52:51 2025] rcu: Preemptible hierarchical RCU implementation.
+[Sat Oct 25 14:52:51 2025] rcu: 	RCU event tracing is enabled.
+[Sat Oct 25 14:52:51 2025] rcu: 	RCU restricting CPUs from NR_CPUS=512 to nr_cpu_ids=4.
+[Sat Oct 25 14:52:51 2025] 	Trampoline variant of Tasks RCU enabled.
+[Sat Oct 25 14:52:51 2025] 	Tracing variant of Tasks RCU enabled.
+[Sat Oct 25 14:52:51 2025] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[Sat Oct 25 14:52:51 2025] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[Sat Oct 25 14:52:51 2025] RCU Tasks: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=4.
+[Sat Oct 25 14:52:51 2025] RCU Tasks Trace: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=4.
+[Sat Oct 25 14:52:51 2025] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[Sat Oct 25 14:52:51 2025] Root IRQ handler: gic_handle_irq
+[Sat Oct 25 14:52:51 2025] GICv2m: ACPI overriding V2M MSI_TYPER (base:80, num:64)
+[Sat Oct 25 14:52:51 2025] GICv2m: range[mem 0x08020000-0x08020fff], SPI[80:143]
+[Sat Oct 25 14:52:51 2025] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[Sat Oct 25 14:52:51 2025] arch_timer: cp15 timer running at 24.00MHz (virt).
+[Sat Oct 25 14:52:51 2025] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[Sat Oct 25 14:52:51 2025] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[Sat Oct 25 14:52:51 2025] Console: colour dummy device 80x25
+[Sat Oct 25 14:52:51 2025] printk: legacy console [tty1] enabled
+[Sat Oct 25 14:52:51 2025] ACPI: Core revision 20250807
+[Sat Oct 25 14:52:51 2025] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[Sat Oct 25 14:52:51 2025] pid_max: default: 32768 minimum: 301
+[Sat Oct 25 14:52:51 2025] LSM: initializing lsm=capability
+[Sat Oct 25 14:52:51 2025] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[Sat Oct 25 14:52:51 2025] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[Sat Oct 25 14:52:51 2025] rcu: Hierarchical SRCU implementation.
+[Sat Oct 25 14:52:51 2025] rcu: 	Max phase no-delay instances is 1000.
+[Sat Oct 25 14:52:51 2025] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[Sat Oct 25 14:52:51 2025] Remapping and enabling EFI services.
+[Sat Oct 25 14:52:51 2025] smp: Bringing up secondary CPUs ...
+[Sat Oct 25 14:52:51 2025] Detected PIPT I-cache on CPU1
+[Sat Oct 25 14:52:51 2025] CPU1: Booted secondary processor 0x0000000001 [0x610f0000]
+[Sat Oct 25 14:52:51 2025] Detected PIPT I-cache on CPU2
+[Sat Oct 25 14:52:51 2025] CPU2: Booted secondary processor 0x0000000002 [0x610f0000]
+[Sat Oct 25 14:52:51 2025] Detected PIPT I-cache on CPU3
+[Sat Oct 25 14:52:51 2025] CPU3: Booted secondary processor 0x0000000003 [0x610f0000]
+[Sat Oct 25 14:52:51 2025] smp: Brought up 1 node, 4 CPUs
+[Sat Oct 25 14:52:51 2025] SMP: Total of 4 processors activated.
+[Sat Oct 25 14:52:51 2025] CPU: All CPU(s) started at EL1
+[Sat Oct 25 14:52:51 2025] CPU features: detected: ARMv8.4 Translation Table Level
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Common not Private translations
+[Sat Oct 25 14:52:51 2025] CPU features: detected: CRC32 instructions
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Data independent timing control (DIT)
+[Sat Oct 25 14:52:51 2025] CPU features: detected: E0PD
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Enhanced Privileged Access Never
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Generic authentication (IMP DEF algorithm)
+[Sat Oct 25 14:52:51 2025] CPU features: detected: RCpc load-acquire (LDAPR)
+[Sat Oct 25 14:52:51 2025] CPU features: detected: LSE atomic instructions
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Privileged Access Never
+[Sat Oct 25 14:52:51 2025] CPU features: detected: RAS Extension Support
+[Sat Oct 25 14:52:51 2025] CPU features: detected: Speculation barrier (SB)
+[Sat Oct 25 14:52:51 2025] CPU features: detected: TLB range maintenance instructions
+[Sat Oct 25 14:52:51 2025] alternatives: applying system-wide alternatives
+[Sat Oct 25 14:52:51 2025] Memory: 8078268K/8388608K available (18560K kernel code, 5426K rwdata, 13136K rodata, 3264K init, 690K bss, 272876K reserved, 32768K cma-reserved)
+[Sat Oct 25 14:52:51 2025] devtmpfs: initialized
+[Sat Oct 25 14:52:51 2025] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[Sat Oct 25 14:52:51 2025] posixtimers hash table entries: 2048 (order: 3, 32768 bytes, linear)
+[Sat Oct 25 14:52:51 2025] futex hash table entries: 1024 (65536 bytes on 1 NUMA nodes, total 64 KiB, linear).
+[Sat Oct 25 14:52:51 2025] 2G module region forced by RANDOMIZE_MODULE_REGION_FULL
+[Sat Oct 25 14:52:51 2025] 0 pages in range for non-PLT usage
+[Sat Oct 25 14:52:51 2025] 513952 pages in range for PLT usage
+[Sat Oct 25 14:52:51 2025] pinctrl core: initialized pinctrl subsystem
+[Sat Oct 25 14:52:51 2025] SMBIOS 3.0.0 present.
+[Sat Oct 25 14:52:51 2025] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[Sat Oct 25 14:52:51 2025] DMI: Memory slots populated: 1/1
+[Sat Oct 25 14:52:51 2025] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[Sat Oct 25 14:52:51 2025] DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+[Sat Oct 25 14:52:51 2025] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[Sat Oct 25 14:52:51 2025] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[Sat Oct 25 14:52:51 2025] audit: initializing netlink subsys (disabled)
+[Sat Oct 25 14:52:51 2025] audit: type=2000 audit(0.000:1): state=initialized audit_enabled=0 res=1
+[Sat Oct 25 14:52:51 2025] thermal_sys: Registered thermal governor 'step_wise'
+[Sat Oct 25 14:52:51 2025] thermal_sys: Registered thermal governor 'power_allocator'
+[Sat Oct 25 14:52:51 2025] cpuidle: using governor menu
+[Sat Oct 25 14:52:51 2025] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[Sat Oct 25 14:52:51 2025] ASID allocator initialised with 256 entries
+[Sat Oct 25 14:52:51 2025] acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+[Sat Oct 25 14:52:51 2025] Serial: AMBA PL011 UART driver
+[Sat Oct 25 14:52:51 2025] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[Sat Oct 25 14:52:51 2025] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[Sat Oct 25 14:52:51 2025] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[Sat Oct 25 14:52:51 2025] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[Sat Oct 25 14:52:51 2025] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[Sat Oct 25 14:52:51 2025] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[Sat Oct 25 14:52:51 2025] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[Sat Oct 25 14:52:51 2025] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[Sat Oct 25 14:52:51 2025] ACPI: Added _OSI(Module Device)
+[Sat Oct 25 14:52:51 2025] ACPI: Added _OSI(Processor Device)
+[Sat Oct 25 14:52:51 2025] ACPI: Added _OSI(Processor Aggregator Device)
+[Sat Oct 25 14:52:51 2025] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[Sat Oct 25 14:52:51 2025] ACPI: Interpreter enabled
+[Sat Oct 25 14:52:51 2025] ACPI: Using GIC for interrupt routing
+[Sat Oct 25 14:52:51 2025] ACPI: MCFG table detected, 1 entries
+[Sat Oct 25 14:52:51 2025] ACPI: CPU0 has been hot-added
+[Sat Oct 25 14:52:51 2025] ACPI: CPU1 has been hot-added
+[Sat Oct 25 14:52:51 2025] ACPI: CPU2 has been hot-added
+[Sat Oct 25 14:52:51 2025] ACPI: CPU3 has been hot-added
+[Sat Oct 25 14:52:51 2025] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[Sat Oct 25 14:52:51 2025] printk: console [ttyAMA0] enabled
+[Sat Oct 25 14:52:51 2025] ACPI: PCI: Interrupt link L000 configured for IRQ 35
+[Sat Oct 25 14:52:51 2025] ACPI: PCI: Interrupt link L001 configured for IRQ 36
+[Sat Oct 25 14:52:51 2025] ACPI: PCI: Interrupt link L002 configured for IRQ 37
+[Sat Oct 25 14:52:51 2025] ACPI: PCI: Interrupt link L003 configured for IRQ 38
+[Sat Oct 25 14:52:51 2025] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[Sat Oct 25 14:52:51 2025] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[Sat Oct 25 14:52:51 2025] acpi PNP0A08:00: _OSC: platform does not support [LTR]
+[Sat Oct 25 14:52:51 2025] acpi PNP0A08:00: _OSC: OS now controls [PME AER PCIeCapability]
+[Sat Oct 25 14:52:51 2025] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[Sat Oct 25 14:52:51 2025] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[Sat Oct 25 14:52:51 2025] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[Sat Oct 25 14:52:51 2025] PCI host bridge to bus 0000:00
+[Sat Oct 25 14:52:51 2025] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[Sat Oct 25 14:52:51 2025] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[Sat Oct 25 14:52:51 2025] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[Sat Oct 25 14:52:51 2025] pci_bus 0000:00: root bus resource [bus 00-ff]
+[Sat Oct 25 14:52:51 2025] PCI: OF: of_root node is NULL, cannot create PCI host bridge node
+[Sat Oct 25 14:52:51 2025] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: BAR 0 [io  0x0160-0x017f]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: BAR 1 [mem 0x10049000-0x10049fff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: BAR 4 [mem 0x8000000000-0x8000003fff 64bit pref]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: ROM [mem 0xfffc0000-0xffffffff pref]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:02.0: [1af4:1050] type 00 class 0x038000 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:02.0: BAR 1 [mem 0x10048000-0x10048fff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:02.0: BAR 4 [mem 0x8000004000-0x8000007fff 64bit pref]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:03.0: [8086:2668] type 00 class 0x040300 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:03.0: BAR 0 [mem 0x10040000-0x10043fff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:04.0: [1033:0194] type 00 class 0x0c0330 PCIe Root Complex Integrated Endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:04.0: BAR 0 [mem 0x800001c000-0x800001ffff 64bit]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:05.0: [1b36:000d] type 00 class 0x0c0330 PCIe Root Complex Integrated Endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:05.0: BAR 0 [mem 0x8000018000-0x800001bfff 64bit]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:06.0: [1af4:1001] type 00 class 0x010000 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:06.0: BAR 0 [io  0x0080-0x00ff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:06.0: BAR 1 [mem 0x10047000-0x10047fff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:06.0: BAR 4 [mem 0x8000008000-0x800000bfff 64bit pref]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:07.0: [1af4:1001] type 00 class 0x010000 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:07.0: BAR 0 [io  0x0000-0x007f]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:07.0: BAR 1 [mem 0x10046000-0x10046fff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:07.0: BAR 4 [mem 0x800000c000-0x800000ffff 64bit pref]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:08.0: [1af4:1003] type 00 class 0x078000 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:08.0: BAR 0 [io  0x0100-0x013f]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:08.0: BAR 1 [mem 0x10045000-0x10045fff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:08.0: BAR 4 [mem 0x8000010000-0x8000013fff 64bit pref]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:09.0: [1af4:1005] type 00 class 0x00ff00 conventional PCI endpoint
+[Sat Oct 25 14:52:51 2025] pci 0000:00:09.0: BAR 0 [io  0x0140-0x015f]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:09.0: BAR 1 [mem 0x10044000-0x10044fff]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:09.0: BAR 4 [mem 0x8000014000-0x8000017fff 64bit pref]
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: ROM [mem 0x10000000-0x1003ffff pref]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: BAR 4 [mem 0x8000000000-0x8000003fff 64bit pref]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:02.0: BAR 4 [mem 0x8000004000-0x8000007fff 64bit pref]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:03.0: BAR 0 [mem 0x10040000-0x10043fff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:04.0: BAR 0 [mem 0x8000008000-0x800000bfff 64bit]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:05.0: BAR 0 [mem 0x800000c000-0x800000ffff 64bit]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:06.0: BAR 4 [mem 0x8000010000-0x8000013fff 64bit pref]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:07.0: BAR 4 [mem 0x8000014000-0x8000017fff 64bit pref]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:08.0: BAR 4 [mem 0x8000018000-0x800001bfff 64bit pref]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:09.0: BAR 4 [mem 0x800001c000-0x800001ffff 64bit pref]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: BAR 1 [mem 0x10044000-0x10044fff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:02.0: BAR 1 [mem 0x10045000-0x10045fff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:06.0: BAR 1 [mem 0x10046000-0x10046fff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:07.0: BAR 1 [mem 0x10047000-0x10047fff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:08.0: BAR 1 [mem 0x10048000-0x10048fff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:09.0: BAR 1 [mem 0x10049000-0x10049fff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:06.0: BAR 0 [io  0x1000-0x107f]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:07.0: BAR 0 [io  0x1080-0x10ff]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:08.0: BAR 0 [io  0x1100-0x113f]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:01.0: BAR 0 [io  0x1140-0x115f]: assigned
+[Sat Oct 25 14:52:51 2025] pci 0000:00:09.0: BAR 0 [io  0x1160-0x117f]: assigned
+[Sat Oct 25 14:52:51 2025] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[Sat Oct 25 14:52:51 2025] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[Sat Oct 25 14:52:51 2025] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[Sat Oct 25 14:52:51 2025] iommu: Default domain type: Translated
+[Sat Oct 25 14:52:51 2025] iommu: DMA domain TLB invalidation policy: strict mode
+[Sat Oct 25 14:52:51 2025] SCSI subsystem initialized
+[Sat Oct 25 14:52:51 2025] libata version 3.00 loaded.
+[Sat Oct 25 14:52:51 2025] ACPI: bus type USB registered
+[Sat Oct 25 14:52:51 2025] usbcore: registered new interface driver usbfs
+[Sat Oct 25 14:52:51 2025] usbcore: registered new interface driver hub
+[Sat Oct 25 14:52:51 2025] usbcore: registered new device driver usb
+[Sat Oct 25 14:52:51 2025] pps_core: LinuxPPS API ver. 1 registered
+[Sat Oct 25 14:52:51 2025] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[Sat Oct 25 14:52:51 2025] PTP clock support registered
+[Sat Oct 25 14:52:51 2025] EDAC MC: Ver: 3.0.0
+[Sat Oct 25 14:52:51 2025] scmi_core: SCMI protocol bus registered
+[Sat Oct 25 14:52:51 2025] efivars: Registered efivars operations
+[Sat Oct 25 14:52:51 2025] FPGA manager framework
+[Sat Oct 25 14:52:51 2025] vgaarb: loaded
+[Sat Oct 25 14:52:51 2025] clocksource: Switched to clocksource arch_sys_counter
+[Sat Oct 25 14:52:51 2025] VFS: Disk quotas dquot_6.6.0
+[Sat Oct 25 14:52:51 2025] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[Sat Oct 25 14:52:51 2025] pnp: PnP ACPI init
+[Sat Oct 25 14:52:51 2025] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[Sat Oct 25 14:52:51 2025] pnp: PnP ACPI: found 1 devices
+[Sat Oct 25 14:52:51 2025] NET: Registered PF_INET protocol family
+[Sat Oct 25 14:52:51 2025] IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[Sat Oct 25 14:52:51 2025] tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[Sat Oct 25 14:52:51 2025] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[Sat Oct 25 14:52:51 2025] TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[Sat Oct 25 14:52:51 2025] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[Sat Oct 25 14:52:51 2025] TCP: Hash tables configured (established 65536 bind 65536)
+[Sat Oct 25 14:52:51 2025] UDP hash table entries: 4096 (order: 6, 262144 bytes, linear)
+[Sat Oct 25 14:52:51 2025] UDP-Lite hash table entries: 4096 (order: 6, 262144 bytes, linear)
+[Sat Oct 25 14:52:51 2025] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[Sat Oct 25 14:52:51 2025] RPC: Registered named UNIX socket transport module.
+[Sat Oct 25 14:52:51 2025] RPC: Registered udp transport module.
+[Sat Oct 25 14:52:51 2025] RPC: Registered tcp transport module.
+[Sat Oct 25 14:52:51 2025] RPC: Registered tcp-with-tls transport module.
+[Sat Oct 25 14:52:51 2025] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[Sat Oct 25 14:52:51 2025] pci 0000:00:04.0: enabling device (0000 -> 0002)
+[Sat Oct 25 14:52:51 2025] pci 0000:00:05.0: enabling device (0000 -> 0002)
+[Sat Oct 25 14:52:51 2025] PCI: CLS 0 bytes, default 64
+[Sat Oct 25 14:52:51 2025] kvm [1]: HYP mode not available
+[Sat Oct 25 14:52:51 2025] Initialise system trusted keyrings
+[Sat Oct 25 14:52:51 2025] workingset: timestamp_bits=42 max_order=21 bucket_order=0
+[Sat Oct 25 14:52:51 2025] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[Sat Oct 25 14:52:51 2025] NFS: Registering the id_resolver key type
+[Sat Oct 25 14:52:51 2025] Key type id_resolver registered
+[Sat Oct 25 14:52:51 2025] Key type id_legacy registered
+[Sat Oct 25 14:52:51 2025] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[Sat Oct 25 14:52:51 2025] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[Sat Oct 25 14:52:51 2025] 9p: Installing v9fs 9p2000 file system support
+[Sat Oct 25 14:52:51 2025] Key type asymmetric registered
+[Sat Oct 25 14:52:51 2025] Asymmetric key parser 'x509' registered
+[Sat Oct 25 14:52:51 2025] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 244)
+[Sat Oct 25 14:52:51 2025] io scheduler mq-deadline registered
+[Sat Oct 25 14:52:51 2025] io scheduler kyber registered
+[Sat Oct 25 14:52:51 2025] io scheduler bfq registered
+[Sat Oct 25 14:52:51 2025] ledtrig-cpu: registered to indicate activity on CPUs
+[Sat Oct 25 14:52:51 2025] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[Sat Oct 25 14:52:51 2025] ACPI: button: Power Button [PWRB]
+[Sat Oct 25 14:52:51 2025] ACPI: \_SB_.L001: Enabled at IRQ 36
+[Sat Oct 25 14:52:51 2025] virtio-pci 0000:00:01.0: enabling device (0000 -> 0003)
+[Sat Oct 25 14:52:51 2025] ACPI: \_SB_.L002: Enabled at IRQ 37
+[Sat Oct 25 14:52:51 2025] virtio-pci 0000:00:06.0: enabling device (0005 -> 0007)
+[Sat Oct 25 14:52:51 2025] ACPI: \_SB_.L003: Enabled at IRQ 38
+[Sat Oct 25 14:52:51 2025] virtio-pci 0000:00:07.0: enabling device (0005 -> 0007)
+[Sat Oct 25 14:52:51 2025] ACPI: \_SB_.L000: Enabled at IRQ 35
+[Sat Oct 25 14:52:51 2025] virtio-pci 0000:00:08.0: enabling device (0000 -> 0003)
+[Sat Oct 25 14:52:51 2025] virtio-pci 0000:00:09.0: enabling device (0005 -> 0007)
+[Sat Oct 25 14:52:51 2025] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[Sat Oct 25 14:52:51 2025] msm_serial: driver initialized
+[Sat Oct 25 14:52:51 2025] SuperH (H)SCI(F) driver initialized
+[Sat Oct 25 14:52:51 2025] STM32 USART driver initialized
+[Sat Oct 25 14:52:51 2025] ACPI: bus type drm_connector registered
+[Sat Oct 25 14:52:51 2025] [drm] pci: virtio-gpu-pci detected at 0000:00:02.0
+[Sat Oct 25 14:52:51 2025] [drm] features: -virgl +edid -resource_blob -host_visible
+[Sat Oct 25 14:52:51 2025] [drm] features: -context_init
+[Sat Oct 25 14:52:51 2025] [drm] number of scanouts: 1
+[Sat Oct 25 14:52:51 2025] [drm] number of cap sets: 0
+[Sat Oct 25 14:52:51 2025] [drm] Initialized virtio_gpu 0.1.0 for 0000:00:02.0 on minor 0
+[Sat Oct 25 14:52:51 2025] Console: switching to colour frame buffer device 160x50
+[Sat Oct 25 14:52:51 2025] virtio-pci 0000:00:02.0: [drm] fb0: virtio_gpudrmfb frame buffer device
+[Sat Oct 25 14:52:51 2025] loop: module loaded
+[Sat Oct 25 14:52:51 2025] virtio_blk virtio2: 4/0/0 default/read/poll queues
+[Sat Oct 25 14:52:51 2025] virtio_blk virtio2: [vda] 134217728 512-byte logical blocks (68.7 GB/64.0 GiB)
+[Sat Oct 25 14:52:51 2025]  vda: vda1 vda2 vda3
+[Sat Oct 25 14:52:51 2025] virtio_blk virtio3: 4/0/0 default/read/poll queues
+[Sat Oct 25 14:52:51 2025] virtio_blk virtio3: [vdb] 134217728 512-byte logical blocks (68.7 GB/64.0 GiB)
+[Sat Oct 25 14:52:51 2025]  vdb: vdb1 vdb2 vdb3 vdb4
+[Sat Oct 25 14:52:51 2025] megasas: 07.734.00.00-rc1
+[Sat Oct 25 14:52:51 2025] tun: Universal TUN/TAP device driver, 1.6
+[Sat Oct 25 14:52:51 2025] thunder_xcv, ver 1.0
+[Sat Oct 25 14:52:51 2025] thunder_bgx, ver 1.0
+[Sat Oct 25 14:52:51 2025] nicpf, ver 1.0
+[Sat Oct 25 14:52:51 2025] e1000: Intel(R) PRO/1000 Network Driver
+[Sat Oct 25 14:52:51 2025] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[Sat Oct 25 14:52:51 2025] e1000e: Intel(R) PRO/1000 Network Driver
+[Sat Oct 25 14:52:51 2025] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[Sat Oct 25 14:52:51 2025] igb: Intel(R) Gigabit Ethernet Network Driver
+[Sat Oct 25 14:52:51 2025] igb: Copyright (c) 2007-2014 Intel Corporation.
+[Sat Oct 25 14:52:51 2025] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[Sat Oct 25 14:52:51 2025] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[Sat Oct 25 14:52:51 2025] sky2: driver version 1.30
+[Sat Oct 25 14:52:51 2025] VFIO - User Level meta-driver version: 0.3
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:04.0: xHCI Host Controller
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:04.0: new USB bus registered, assigned bus number 1
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:04.0: hcc params 0x00080001 hci version 0x100 quirks 0x0000000000000014
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:04.0: xHCI Host Controller
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:04.0: new USB bus registered, assigned bus number 2
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:04.0: Host supports USB 3.0 SuperSpeed
+[Sat Oct 25 14:52:51 2025] hub 1-0:1.0: USB hub found
+[Sat Oct 25 14:52:51 2025] hub 1-0:1.0: 4 ports detected
+[Sat Oct 25 14:52:51 2025] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[Sat Oct 25 14:52:51 2025] hub 2-0:1.0: USB hub found
+[Sat Oct 25 14:52:51 2025] hub 2-0:1.0: 4 ports detected
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:05.0: xHCI Host Controller
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:05.0: new USB bus registered, assigned bus number 3
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:05.0: hcc params 0x00087001 hci version 0x100 quirks 0x0000000000000010
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:05.0: xHCI Host Controller
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:05.0: new USB bus registered, assigned bus number 4
+[Sat Oct 25 14:52:51 2025] xhci_hcd 0000:00:05.0: Host supports USB 3.0 SuperSpeed
+[Sat Oct 25 14:52:51 2025] hub 3-0:1.0: USB hub found
+[Sat Oct 25 14:52:51 2025] hub 3-0:1.0: 4 ports detected
+[Sat Oct 25 14:52:51 2025] usb usb4: We don't know the algorithms for LPM for this host, disabling LPM.
+[Sat Oct 25 14:52:51 2025] hub 4-0:1.0: USB hub found
+[Sat Oct 25 14:52:51 2025] hub 4-0:1.0: 4 ports detected
+[Sat Oct 25 14:52:51 2025] usbcore: registered new interface driver usb-storage
+[Sat Oct 25 14:52:51 2025] rtc-efi rtc-efi.0: registered as rtc0
+[Sat Oct 25 14:52:51 2025] rtc-efi rtc-efi.0: setting system clock to 2025-10-25T14:52:51 UTC (1761403971)
+[Sat Oct 25 14:52:51 2025] i2c_dev: i2c /dev entries driver
+[Sat Oct 25 14:52:51 2025] sdhci: Secure Digital Host Controller Interface driver
+[Sat Oct 25 14:52:51 2025] sdhci: Copyright(c) Pierre Ossman
+[Sat Oct 25 14:52:51 2025] Synopsys Designware Multimedia Card Interface Driver
+[Sat Oct 25 14:52:51 2025] sdhci-pltfm: SDHCI platform and OF driver helper
+[Sat Oct 25 14:52:51 2025] pstore: Using crash dump compression: deflate
+[Sat Oct 25 14:52:51 2025] pstore: Registered efi_pstore as persistent store backend
+[Sat Oct 25 14:52:51 2025] usbcore: registered new interface driver usbhid
+[Sat Oct 25 14:52:51 2025] usbhid: USB HID core driver
+[Sat Oct 25 14:52:51 2025] NET: Registered PF_PACKET protocol family
+[Sat Oct 25 14:52:51 2025] 9pnet: Installing 9P2000 support
+[Sat Oct 25 14:52:51 2025] Key type dns_resolver registered
+[Sat Oct 25 14:52:51 2025] registered taskstats version 1
+[Sat Oct 25 14:52:51 2025] Loading compiled-in X.509 certificates
+[Sat Oct 25 14:52:51 2025] Demotion targets for Node 0: null
+[Sat Oct 25 14:52:51 2025] clk: Disabling unused clocks
+[Sat Oct 25 14:52:51 2025] PM: genpd: Disabling unused power domains
+[Sat Oct 25 14:52:51 2025] check access for rdinit=/init failed: -2, ignoring
+[Sat Oct 25 14:52:51 2025] EXT4-fs (vdb4): INFO: recovery required on readonly filesystem
+[Sat Oct 25 14:52:51 2025] EXT4-fs (vdb4): write access will be enabled during recovery
+[Sat Oct 25 14:52:51 2025] EXT4-fs (vdb4): recovery complete
+[Sat Oct 25 14:52:51 2025] EXT4-fs (vdb4): mounted filesystem cd54ee11-1246-47c8-87cb-0b4aae1b41ff ro with ordered data mode. Quota mode: none.
+[Sat Oct 25 14:52:51 2025] VFS: Mounted root (ext4 filesystem) readonly on device 254:20.
+[Sat Oct 25 14:52:51 2025] devtmpfs: mounted
+[Sat Oct 25 14:52:51 2025] Freeing unused kernel memory: 3264K
+[Sat Oct 25 14:52:51 2025] Run /sbin/init as init process
+[Sat Oct 25 14:52:51 2025]   with arguments:
+[Sat Oct 25 14:52:51 2025]     /sbin/init
+[Sat Oct 25 14:52:51 2025]   with environment:
+[Sat Oct 25 14:52:51 2025]     HOME=/
+[Sat Oct 25 14:52:51 2025]     TERM=linux
+[Sat Oct 25 14:52:51 2025]     earlyprintk=efi,keep
+[Sat Oct 25 14:52:51 2025] udevd[192]: Starting systemd-udevd version 257.8
+[Sat Oct 25 14:52:51 2025] udevd[193]: Using default interface naming scheme 'v257'.
+[Sat Oct 25 14:52:51 2025] virtio_net virtio0 enp0s1: renamed from eth0
+[Sat Oct 25 14:52:51 2025] usb 1-1: new high-speed USB device number 2 using xhci_hcd
+[Sat Oct 25 14:52:51 2025] input: QEMU QEMU USB Tablet as /devices/pci0000:00/0000:00:04.0/usb1/1-1/1-1:1.0/0003:0627:0001.0001/input/input1
+[Sat Oct 25 14:52:51 2025] hid-generic 0003:0627:0001.0001: input: USB HID v0.01 Mouse [QEMU QEMU USB Tablet] on usb-0000:00:04.0-1/input0
+[Sat Oct 25 14:52:52 2025] usb 1-2: new high-speed USB device number 3 using xhci_hcd
+[Sat Oct 25 14:52:52 2025] input: QEMU QEMU USB Mouse as /devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input2
+[Sat Oct 25 14:52:52 2025] hid-generic 0003:0627:0001.0002: input: USB HID v0.01 Mouse [QEMU QEMU USB Mouse] on usb-0000:00:04.0-2/input0
+[Sat Oct 25 14:52:52 2025] usb 1-3: new high-speed USB device number 4 using xhci_hcd
+[Sat Oct 25 14:52:52 2025] input: QEMU QEMU USB Keyboard as /devices/pci0000:00/0000:00:04.0/usb1/1-3/1-3:1.0/0003:0627:0001.0003/input/input3
+[Sat Oct 25 14:52:52 2025] hid-generic 0003:0627:0001.0003: input: USB HID v1.11 Keyboard [QEMU QEMU USB Keyboard] on usb-0000:00:04.0-3/input0
+[Sat Oct 25 14:52:52 2025] usb 1-4: new full-speed USB device number 5 using xhci_hcd
+[Sat Oct 25 14:52:52 2025] hub 1-4:1.0: USB hub found
+[Sat Oct 25 14:52:52 2025] hub 1-4:1.0: 8 ports detected
+[Sat Oct 25 14:52:53 2025] Adding 4194300k swap on /dev/vdb3.  Priority:1 extents:1 across:4194300k 
+[Sat Oct 25 14:52:53 2025] EXT4-fs (vdb4): re-mounted cd54ee11-1246-47c8-87cb-0b4aae1b41ff.
+[Sat Oct 25 14:52:53 2025] EXT4-fs (vdb4): re-mounted cd54ee11-1246-47c8-87cb-0b4aae1b41ff r/w.
+[Sat Oct 25 14:52:53 2025] EXT4-fs (vdb2): mounting ext2 file system using the ext4 subsystem
+[Sat Oct 25 14:52:53 2025] EXT4-fs (vdb2): mounted filesystem c24b22fc-6216-43ad-9f10-188680f2bf4b r/w without journal. Quota mode: none.
+[Sat Oct 25 14:52:53 2025] FAT-fs (vda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+[Sat Oct 25 14:52:53 2025] usb 1-4.1: new full-speed USB device number 6 using xhci_hcd
+[Sat Oct 25 14:52:53 2025] usb 1-4.1: not running at top speed; connect to a high speed hub
+[Sat Oct 25 14:52:53 2025] usb-storage 1-4.1:1.0: USB Mass Storage device detected
+[Sat Oct 25 14:52:53 2025] scsi host0: usb-storage 1-4.1:1.0
+[Sat Oct 25 14:52:54 2025] NET: Registered PF_INET6 protocol family
+[Sat Oct 25 14:52:54 2025] Segment Routing with IPv6
+[Sat Oct 25 14:52:54 2025] In-situ OAM (IOAM) with IPv6
+[Sat Oct 25 14:52:54 2025] scsi 0:0:0:0: CD-ROM            QEMU     QEMU CD-ROM      2.5+ PQ: 0 ANSI: 5

@@ -141,4 +141,57 @@ Et voila, le machtou pichtou
 
 ## Assignment 01
 
-> en cours
+<details>
+<summary>Voir le détail</summary>
+
+#### Objectif
+
+Créer un module kernel simple qui affiche un message dans le log du kernel lors de son insertion et de son retrait, en faisant attention a la compatibilité des versions
+
+#### À rendre
+
+- Le code source du module kernel  
+- Le fichier Makefile pour compiler le module
+
+#### Étapes
+
+1. Coder le fichier .c du module et son Makefile
+
+[Code source ici](../project/a01/)
+
+2. Compiler le module
+
+```bash
+make
+```
+
+3. Insérer le module dans le kernel
+
+```bash
+sudo insmod main.ko
+dmesg -T | tail -n 1
+# doit afficher
+# [timestamp] Hello world!
+```
+> le flag -T permet d'avoir des timestamps lisibles
+
+4. Retirer le module du kernel
+
+```bash
+sudo rmmod main.ko
+dmesg -T | tail -n 1
+# doit afficher
+# [timestamp] Cleaning up module.
+```
+
+5. Exporter les fichiers demandés
+
+> Tu connais la procedure en `scp`
+
+Et voila, le machtou pichtou
+
+</details>
+
+## Assignment 02
+
+> En cours de réalisation

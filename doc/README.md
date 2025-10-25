@@ -157,7 +157,7 @@ Créer un module kernel simple qui affiche un message dans le log du kernel lors
 
 1. Coder le fichier .c du module et son Makefile
 
-[Code source ici](../project/01/)
+> [Code source ici](../project/01/)
 
 2. Compiler le module
 
@@ -192,6 +192,122 @@ Et voila, le machtou pichtou
 
 </details>
 
+<br>
+
 ## Assignment 02
+
+<details>
+<summary>Voir le détail</summary>
+
+#### Objectif
+
+Reprendre le kernel compilé dans l'Assignment 00 et modifier le Makefile pour changer le champ EXTRAVERSION, pour ajouter le suffixe "-thor_kernel".
+
+#### À rendre
+
+- Le boot log du kernel
+- Le patch au Makefile modifié
+
+#### Étapes
+
+1. Preparer la config
+
+```bash
+cd /usr/src/linux-linus
+cp -v /boot/config-6.18.0-rc2-00236-g566771afc7a8 .config
+yes "" | make oldconfig
+```
+
+2. Modifier le Makefile
+
+Modifier EXTRAVERSION pour ajouter -thor_kernel
+```bash
+# si deja defini
+if grep -qE '^EXTRAVERSION[[:space:]]*=' Makefile; then
+  sed -i 's/^\(EXTRAVERSION[[:space:]]*=[[:space:]]*[^#\n]*\)/\1-thor_kernel/' Makefile
+else
+  # sinon add au debut du fichier
+  sed -i '1i EXTRAVERSION = -thor_kernel' Makefile
+fi
+```
+
+Check
+```bash
+grep -n '^EXTRAVERSION' Makefile
+make -s kernelrelease
+```
+> Si il y a un suffixe "-thor_kernel" dans le retour, c'est bon. Ignorer le "-dirty" si present, ca veut juste dire que des fichiers ont été modifiés depuis la derniere compilation
+
+3. Compiler le kernel et les modules
+
+```bash
+make -j"$(nproc)"
+make modules_install
+```
+
+4. Copier le noyau dans boot
+
+```bash
+KREL="$(make -s kernelrelease)"
+cp -v arch/arm64/boot/Image "/boot/Image-${KREL}"
+cp -v System.map             "/boot/System.map-${KREL}"
+cp -v .config                "/boot/config-${KREL}"
+ls -lh /boot | grep "${KREL}"
+```
+
+5. Mettre a jour la config de GRUB
+
+ajouter cette entrée a la fin de /boot/grub/grub.cfg
+
+```
+menuentry "Little-Penguin-02 (Image 6.18.0-rc2-thor_kernel)" {
+    linux /Image-6.18.0-rc2-thor_kernel+ root=PARTUUID=557f28c8-5006-6f4a-b73d-eb11e6468a1d ro console=tty1 console=ttyAMA0 earlyprintk=efi,keep ignore_loglevel
+}
+```
+> Adapter les valeurs selon votre archi, prenez exemple sur l'entrée Little-Penguin-00
+
+6. Rebooter sur le nouveau kernel
+
+> reboot la VM
+
+Selectionner le kernel "Little-Penguin-02" dans le menu GRUB  
+
+Verifier avec 
+```bash
+uname -r
+# Doit retourner : 6.18.0-rc2-thor_kernel
+```
+> peut changer selon version exacte compilée
+
+7. Créer le fichier patch
+
+```bash
+cd /usr/src/linux-linus
+git add Makefile
+git commit -s -m "Makefile: append -thor_kernel to EXTRAVERSION
+
+Add -thor_kernel to EXTRAVERSION so the running kernel reports the
+required suffix for assignment 02."
+git format-patch -1 --base=auto --stdout > ../makefile-thor_kernel.patch
+```
+> oui mon message de commit est genere par chatGPT, j'suis pas inspiré
+> le flag -s sert a ajouter la ligne "Signed-off-by: ..." automatiquement, et le base auto sert a eviter les conflits de format (bonnes pratiques selon [la doc ici](https://github.com/torvalds/linux/blob/master/Documentation/process/submitting-patches.rst))
+
+Check
+```bash
+ls -lh ../makefile-thor_kernel.patch
+head -n 25 ../makefile-thor_kernel.patch
+git show --stat
+```
+
+8. Exporter les fichiers demandés
+
+> Maintenant tu connais la procedure en `scp`
+
+</details>
+
+<br>
+
+## Assignment 03
 
 > En cours de réalisation

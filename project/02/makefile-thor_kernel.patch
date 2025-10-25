@@ -1,0 +1,31 @@
+From 3cac613c724d43b20174d9365c3cf3b19642d8fc Mon Sep 17 00:00:00 2001
+From: cedmulle <cedmulle@student.42lausanne.ch>
+Date: Sat, 25 Oct 2025 16:27:38 +0200
+Subject: [PATCH] Makefile: append -thor_kernel to EXTRAVERSION
+
+Add -thor_kernel to EXTRAVERSION so the running kernel reports the
+required suffix for assignment 02.
+
+Signed-off-by: cedmulle <cedmulle@student.42lausanne.ch>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index d14824792227..916e89f0d9fa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 18
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc2
++EXTRAVERSION = -rc2-thor_kernel
+ NAME = Baby Opossum Posse
+ 
+ # *DOCUMENTATION*
+
+base-commit: 566771afc7a81e343da9939f0bd848d3622e2501
+-- 
+2.50.1
+

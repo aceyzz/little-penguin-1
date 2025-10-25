@@ -8,6 +8,8 @@ Ce projet a pour but de réaliser un certain nombre d'exercices suite à notre p
 
 > En cours de réalisation, merci de votre patience
 
+Suivre mon avancée [dans ma feuille de route](./doc/README.md)
+
 <br>
 
 ## Liens utiles

@@ -157,7 +157,7 @@ Créer un module kernel simple qui affiche un message dans le log du kernel lors
 
 1. Coder le fichier .c du module et son Makefile
 
-[Code source ici](../project/a01/)
+[Code source ici](../project/01/)
 
 2. Compiler le module
 

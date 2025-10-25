@@ -310,4 +310,58 @@ git show --stat
 
 ## Assignment 03
 
+<details>
+<summary>Voir le détail</summary>
+
+#### Objectif
+
+Modifier le fichier .c donné pour qu'il soit compliant avec le [Linux Kernel Coding Style (LKCS)](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
+
+#### À rendre
+
+- Le code source modifié du module kernel
+
+#### Étapes
+
+1. Récupérer le code source de base
+
+2. Créer un fichier .c dans le dossier du kernel
+
+```bash
+cd /usr/src/linux-linus
+# vim ou copy comme tu veux
+# perso jai fait un fichier `moche.c`
+```
+
+3. Analyser les erreurs de style
+
+```bash
+./scripts/checkpatch.pl --no-tree --strict --show-types --file moche.c
+```
+
+4. Corriger les erreurs de style
+
+Suivre chaque remarque de checkpatch.pl et modifier le code source en conséquence, un peu comme avec la norminette (ehhhh ouaaaais, casse la tete)  
+Mon implémentation corrigée est [ici](../project/03/main.c)
+
+5. Re-analyser le code corrigé
+
+```bash
+./scripts/checkpatch.pl --no-tree --strict --show-types --file moche.c
+# doit retourner :
+#   total: 0 errors, 0 warnings, 0 checks, 38 lines checked
+# 
+#   moche.c has no obvious style problems and is ready for submission.
+```
+
+6. Exporter les fichiers demandés
+
+> Tu connais la procedure en `scp`
+
+</details>
+
+<br>
+
+## Assignment 04
+
 > En cours de réalisation

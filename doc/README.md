@@ -364,4 +364,68 @@ Mon implémentation corrigée est [ici](../project/03/main.c)
 
 ## Assignment 04
 
+<details>
+<summary>Voir le détail</summary>
+
+#### Objectif
+
+Modifier le module kernel fait dans [l'assignment 01](#assignment-01) pour qu'il soit chargé automatiquement lorsqu'un clavier USB est branché sur la machine
+
+#### À rendre
+
+- Le code source modifié du module kernel  
+- Un "rules file" `udev` pour charger le module automatiquement  
+- Une preuve (log) que le module a bien été chargé automatiquement  
+
+#### Étapes
+
+1. Créer une règle `udev`
+
+> [Voir règle dans le dossier](../project/04)
+
+A placer dans `/etc/udev/rules.d`
+
+
+2. Ajuster le code source du module
+
+> [Code source ici](../project/04/)
+
+3. Compiler le module
+
+```bash
+make
+```
+> J'ai repris un peu la meme logique qu'on avait faite dans ft_linux
+
+4. Recharger les règles udev
+
+```bash
+udevadm control --reload-rules
+```
+
+Optionnel mais utile pour proof : clean l'historique
+```bash
+dmesg -c >/dev/null 2>&1 || true
+```
+
+5. Tester
+
+```bash
+# brancher un clavier USB, puis verifier les logs
+dmesg -T | tail -n 5
+```
+
+6. Exporter les fichiers demandés
+
+```bash
+dmesg -T > plug.log
+```
+> Tu connais la procedure en `scp`
+
+</details>
+
+<br>
+
+## Assignment 05
+
 > En cours de réalisation

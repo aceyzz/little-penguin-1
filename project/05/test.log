@@ -1,0 +1,97 @@
+make -C /lib/modules/6.16.1-cedmulle/build M=/root/a05 modules
+make[1]: Entering directory '/usr/src/kernel-6.16.1'
+make[2]: Entering directory '/root/a05'
+make[2]: Leaving directory '/root/a05'
+make[1]: Leaving directory '/usr/src/kernel-6.16.1'
+[STEP 0] Reset dmesg
+COMMAND : dmesg -c
+EXPECTED: clear kernel ring buffer (no specific output)
+OBTAINED: [ 5736.332260] fortytwo: registration OK
+[ 5736.374132] fortytwo: deregistration OK
+RC      : 0
+RESULT  : PASS
+
+[STEP 1] Pre-unload module (if loaded)
+COMMAND : rmmod fortytwo
+EXPECTED: module removed or not present
+OBTAINED: rmmod: ERROR: Module fortytwo is not currently loaded
+RC      : 0
+RESULT  : PASS
+
+[STEP 2] Insert module
+COMMAND : insmod fortytwo.ko
+EXPECTED: RC=0 and a registration message in dmesg
+OBTAINED: 
+KMSG    : [ 5966.802235] fortytwo: registration OK
+RC      : 0
+RESULT  : PASS
+
+[STEP 3] Check device node
+COMMAND : ls -l /dev/fortytwo
+EXPECTED: /dev/fortytwo exists (char device), RC=0
+OBTAINED: crw-rw-rw- 1 root root 10, 259 Oct 26 10:35 /dev/fortytwo
+RC      : 0
+RESULT  : PASS
+
+[STEP 4] Read #1 (fresh offset) -> must return login
+COMMAND : cat /dev/fortytwo
+EXPECTED: stdout == 'cedmulle', RC=0
+OBTAINED: cedmulle
+RC      : 0
+RESULT  : PASS
+
+[STEP 5] Read #2 on SAME FD (EOF) -> must be empty
+COMMAND : exec 3</dev/fortytwo; dd <&3 bs=8 count=1; dd <&3 bs=8 count=1; exec 3<&-
+EXPECTED: first dd outputs 'cedmulle', second dd outputs '' (empty), RC=0
+OBTAINED: first='cedmulle' second=''
+RC      : 0
+RESULT  : PASS
+
+[STEP 6] Valid write (exact, no newline)
+COMMAND : printf '%s' 'cedmulle' > /dev/fortytwo
+EXPECTED: RC=0
+OBTAINED: (no stdout)
+RC      : 0
+RESULT  : PASS
+
+[STEP 7] Valid write (login + newline)
+COMMAND : printf '%s\n' 'cedmulle' > /dev/fortytwo
+EXPECTED: RC=0
+OBTAINED: (no stdout)
+RC      : 0
+RESULT  : PASS
+
+[STEP 8] Invalid write (same length, wrong content)
+COMMAND : bad=$(printf '%s' 'cedmulle' | tr 'a-z' 'n-za-m'); printf '%s' "$bad" > /dev/fortytwo
+EXPECTED: RC!=0 (EINVAL)
+INFO    : altered='prqzhyyr'
+/bin/sh: line 1: printf: write error: Invalid argument
+OBTAINED: (no stdout)
+RC      : 1
+RESULT  : PASS
+
+[STEP 9] Invalid write (wrong length: too short)
+COMMAND : printf 'ced' > /dev/fortytwo
+EXPECTED: RC!=0 (EINVAL)
+sh: line 1: printf: write error: Invalid argument
+OBTAINED: (no stdout)
+RC      : 1
+RESULT  : PASS
+
+[STEP 10] Read again with fixed size -> must return login
+COMMAND : dd if=/dev/fortytwo bs=<LOGIN_LEN> count=1 | cat
+EXPECTED: stdout == 'cedmulle', RC=0
+INFO    : LOGIN_LEN=8
+OBTAINED: cedmulle
+RC      : 0
+RESULT  : PASS
+
+[STEP 11] Remove module
+COMMAND : rmmod fortytwo
+EXPECTED: RC=0 and a deregistration message in dmesg
+OBTAINED: 
+KMSG    : [ 5966.840753] fortytwo: deregistration OK
+RC      : 0
+RESULT  : PASS
+
+[SUMMARY] Finished all tests

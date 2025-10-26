@@ -18,6 +18,10 @@ Télécharger, build, installer et booter sur la derniere version du kernel Linu
 
 > dans la VM
 
+0. Explications
+
+Le but de cet exercice est de se familiariser avec la compilation du kernel Linux a partir des sources officielles. Nous allons cloner le dépôt git officiel de Linus Torvalds, configurer le kernel avec une config existante (celle de notre LFS), ajouter quelques options spécifiques, compiler le kernel et les modules, installer le tout, mettre a jour GRUB, et rebooter sur le nouveau kernel. En fait, c'est exactement ce que nous avons fait dans ft_linux, mais cette fois-ci nous allons le faire a partir des sources officielles de Linus Torvalds.
+
 1. Récuperer le Git tree de Linus
 
 ```bash
@@ -155,6 +159,10 @@ Créer un module kernel simple qui affiche un message dans le log du kernel lors
 
 #### Étapes
 
+0. Explications
+
+Un module kernel est un morceau de code qui peut être chargé et déchargé dynamiquement dans le noyau Linux. Cela permet d'ajouter des fonctionnalités au noyau sans avoir a recompiler tout le noyau. Dans cet exercice, nous allons créer un module kernel simple qui affiche un message dans le log du kernel lors de son insertion et de son retrait. Nous allons également nous assurer que le module est compatible avec la version du noyau en cours d'exécution.  
+
 1. Coder le fichier .c du module et son Makefile
 
 > [Code source ici](../project/01/)
@@ -209,6 +217,10 @@ Reprendre le kernel compilé dans l'Assignment 00 et modifier le Makefile pour c
 - Le patch au Makefile modifié
 
 #### Étapes
+
+0. Explications
+
+Le but de cet exercice est de modifier le Makefile du kernel Linux pour changer le champ EXTRAVERSION, en ajoutant le suffixe "-thor_kernel". Cela permettra d'identifier facilement le kernel compilé pour cet exercice. Nous allons ensuite recompiler le kernel avec cette modification, installer le nouveau kernel, mettre a jour GRUB, et rebooter sur le nouveau kernel. Enfin, nous allons créer un patch git pour la modification du Makefile, et exporter le fichier pour preuve dans le rendu.  
 
 1. Preparer la config
 
@@ -323,6 +335,10 @@ Modifier le fichier .c donné pour qu'il soit compliant avec le [Linux Kernel Co
 
 #### Étapes
 
+0. Explications
+
+Le but de cet exercice est de modifier un fichier source C donné pour qu'il soit conforme au **Linux Kernel Coding Style (LKCS)**. Nous allons utiliser l'outil `checkpatch.pl` fourni avec les sources du kernel pour analyser le code et identifier les violations du style (un peu comme on faisait avec la norminette). Ensuite, on corrigera ces violations en suivant les recommandations du LKCS. Puis on exportera le tout pour le rendu.   
+
 1. Récupérer le code source de base
 
 2. Créer un fichier .c dans le dossier du kernel
@@ -379,6 +395,10 @@ Modifier le module kernel fait dans [l'assignment 01](#assignment-01) pour qu'il
 
 #### Étapes
 
+0. Explications
+
+Le but de cet exercice est de modifier le module kernel créé dans l'assignment 01 pour qu'il soit chargé automatiquement lorsqu'un clavier USB est branché sur la machine. Pour cela, nous allons créer une règle `udev` qui détecte l'insertion d'un clavier USB et charge le module en conséquence. On modifiera legerement le code source pour le differencier du module 01. Enfin, nous testerons le tout en branchant un clavier USB et en vérifiant les logs du kernel pour confirmer que le module a été chargé automatiquement. Puis apres comme d'hab > exporter les fichiers pour le rendu  
+
 1. Créer une règle `udev`
 
 > [Voir règle dans le dossier](../project/04)
@@ -428,4 +448,59 @@ dmesg -T > plug.log
 
 ## Assignment 05
 
+<details>
+<summary>Voir le détail</summary>
+
+#### Objectif
+
+Reprendre le module kernel fait dans l'assignment 01 et le transformer en driver de caractère “misc” (interface simplifiée) qui expose un fichier de device `/dev/fortytwo` avec des opérations `read` et `write`
+
+#### À rendre
+
+- Le code source modifié du module kernel
+- Une forme de proof (log) que le module fonctionne correctement
+
+#### Étapes
+
+0. Explications 
+
+Un device permet a l'user space (applications, shell, etc) d'interagir avec le kernel via des fichiers spéciaux dans `/dev`. Creer un **character device** permet la communication caractere par caractere, comme un flux de données. Le kernel fournit une interface simplifiée pour créer des character devices appelés "misc devices" (miscellaneous devices), contrairement aux character devices classiques qui demandent plus de gestion (allocation de major/minor numbers, etc).  
+Ce que nous devons faire, c'est de transformer notre module kernel en un **misc device** qui expose un fichier `/dev/fortytwo`.  
+Quand on lit depuis ce fichier, on doit obtenir la valeur de notre login (pour ma part, `cedmulle`).  
+- Si on ecrit dedans autre chose que notre login, le module doit retourner une erreur `invalid value`.  
+- Si on ecrit notre login, le module doit accepter l'ecriture et stocker la valeur.  
+
+1. Modifier le code source du module
+
+> [Code source ici](../project/05)  
+
+2. Compiler le module
+
+```bash
+make
+```
+
+3. Tester le module
+
+J'ai fait une regle de Makefile pour automatiser les tests
+```bash
+make test
+```
+
+Possible aussi de faire une version plus verbose pour obtenir une preuve sous forme de fichier .log pour le rendu
+```bash
+make test-log > test.log 2>&1
+```
+
+4. Exporter le travail
+
+> Tu connais la procedure en `scp`
+
+</details>
+
+<br>
+
+## Assignment 06
+
 > En cours de réalisation
+

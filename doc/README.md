@@ -612,4 +612,60 @@ dmesg -T > "/root/kernel-boot.log"
 
 ## Assignment 07
 
+<details>
+<summary>Voir le détail</summary>
+
+#### Objectif
+
+Coder un module kernel pour créer une interface debugfs appelée fortytwo qui expose trois fichiers virtuels : id, jiffies et foo, en utilisant le systeme de fichiers debugfs du kernel Linux.
+
+#### À rendre
+
+- Le code source du module kernel
+- Une preuve (log) que le module fonctionne correctement
+
+#### Étapes
+
+0. Explications
+
+Le but de cet exercice est de créer un module kernel qui utilise l'interface debugfs pour exposer des fichiers virtuels permettant d'interagir avec le noyau Linux. Debugfs est un système de fichiers spécial conçu pour le débogage et l'inspection du noyau, offrant une interface simple pour accéder aux données du noyau depuis l'espace utilisateur sans avoir a modifier le code du noyau lui-même ou utiliser des appels système complexes.  
+Nous allons créer un module kernel qui crée un répertoire debugfs appelé `fortytwo`, contenant trois fichiers virtuels : `id`, `jiffies` et `foo`. Chaque fichier aura des fonctionnalités spécifiques pour lire et écrire des données.  
+
+1. Verifier la présence de debugfs, sinon le monter
+
+```bash
+mount | grep debugfs || mount -t debugfs none /sys/kernel/debug
+```
+
+2. Coder le fichier .c du module et son Makefile
+
+> [Code source ici](../project/07)
+
+3. Compiler le module
+
+```bash
+make
+```
+
+4. Tester le module
+
+```bash
+make test
+```
+> Possible aussi de faire une version plus verbose pour obtenir une preuve sous forme de fichier .log pour le rendu
+```bash
+make test-log > test.log 2>&1
+```
+
+5. Exporter le travail
+
+> Tu connais la procedure en `scp`
+
+</details>
+
+<br>
+
+## Assignment 08
+
 > En cours de réalisation
+

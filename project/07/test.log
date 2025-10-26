@@ -1,0 +1,87 @@
+make -C /lib/modules/6.16.1-cedmulle/build M=/root/a07 modules
+make[1]: Entering directory '/usr/src/kernel-6.16.1'
+make[2]: Entering directory '/root/a07'
+make[2]: Leaving directory '/root/a07'
+make[1]: Leaving directory '/usr/src/kernel-6.16.1'
+[STEP 0] Reset dmesg
+OBTAINED: [ 4620.524304] debugfs-fortytwo: dir created
+[ 4620.524418] debugfs-fortytwo: id file created
+[ 4620.524456] debugfs-fortytwo: jiffies file created
+[ 4620.524492] debugfs-fortytwo: foo buffer allocated
+[ 4620.524525] debugfs-fortytwo: foo file created
+[ 4621.616426] debugfs-fortytwo: foo freed memory
+[ 4621.616629] debugfs-fortytwo: dir removed
+RC: 0
+
+[STEP 1] Mount debugfs if needed
+MOUNT: 
+RC: 0
+
+[STEP 2] Pre-unload module
+OBTAINED: rmmod: ERROR: Module debugfs is not currently loaded
+RC: 0
+
+[STEP 3] Insert module
+OBTAINED: 
+KMSG: [ 4663.412488] debugfs-fortytwo: foo file created
+RC: 0
+
+[STEP 4] Check directory
+OBTAINED: drwxr-xr-x 2 root root 0 Oct 26 15:23 /sys/kernel/debug/fortytwo
+RC: 0
+
+[STEP 5] Check files and modes
+/sys/kernel/debug/fortytwo/id => -rw-rw-rw- 1 root root 0 Oct 26 15:23 /sys/kernel/debug/fortytwo/id / RC=0
+/sys/kernel/debug/fortytwo/jiffies => -r--r--r-- 1 root root 0 Oct 26 15:23 /sys/kernel/debug/fortytwo/jiffies / RC=0
+/sys/kernel/debug/fortytwo/foo => -rw-r--r-- 1 root root 0 Oct 26 15:23 /sys/kernel/debug/fortytwo/foo / RC=0
+ID mode=666 JIFFIES mode=444 FOO mode=644
+
+[STEP 6] id: read
+OBTAINED: cedmulle
+RC: 0
+RESULT: PASS
+
+[STEP 7] id: write valid (no NL)
+RC: 0
+RESULT: PASS
+
+[STEP 8] id: write valid (with NL)
+RC: 0
+RESULT: PASS
+
+[STEP 9] id: write invalid content
+sh: line 1: printf: write error: Invalid argument
+RC: 1
+RESULT: PASS
+
+[STEP 10] id: EOF on same FD
+first='cedmulle' second='' RC=0
+RESULT: PASS
+
+[STEP 11] jiffies: read twice and compare
+j1=4296058078 j2=4296058329
+RESULT: PASS
+
+[STEP 12] foo: write as root and read back
+WRITE RC: 0
+READ: hello world
+RESULT: PASS
+
+[STEP 13] foo: non-root write denied
+OBTAINED: sh: line 1: /sys/kernel/debug/fortytwo/foo: Permission denied
+RC: 1
+RESULT: PASS
+
+[STEP 14] foo: PAGE_SIZE boundary
+WRITE 4096 RC: 0
+SIZE READ: 4096
+RESULT: PASS
+
+WRITE 4097 RC: 1
+RESULT: PASS
+
+[STEP 15] Remove module and verify cleanup
+RMMOD: 
+RC: 0
+CLEANUP: PASS
+

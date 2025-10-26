@@ -502,5 +502,114 @@ make test-log > test.log 2>&1
 
 ## Assignment 06
 
-> En cours de réalisation
+<details>
+<summary>Voir le détail</summary>
 
+#### Objectif
+
+Build (encore) et installer un kernel linux `linux-next` a partir des sources officielles. Un peu comme l'assignment 00, mais cette fois-ci avec le tree `linux-next` qui contient les features en cours d'intégration dans le kernel principal.
+
+#### À rendre
+
+- Le boot log du kernel
+
+#### Étapes
+
+0. Explications
+
+La branche linux-next est une branche spéciale du dépôt git du kernel Linux qui contient les dernières modifications et fonctionnalités en cours d'intégration dans le kernel principal. Elle est mise à jour régulièrement avec les contributions des développeurs avant qu'elles ne soient fusionnées dans la branche principale. [Plus d'infos ici](https://www.kernel.org/doc/man-pages/linux-next.html)  
+Le but de cet exercice est de compiler et d'installer un kernel à partir de cette branche linux-next, afin de se familiariser avec le processus de compilation du kernel et d'explorer les dernières fonctionnalités en développement.  
+
+1. Récupérer le Git tree de linux-next
+
+```bash
+cd /usr/src
+git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-next
+cd linux-next
+git remote add linux-next https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+git fetch linux-next --tags
+LATEST_NEXT_TAG="$(git tag -l 'next-*' | sort -V | tail -1)"
+git switch -c lp06 "${LATEST_NEXT_TAG}"
+git describe --tags --always
+```
+> Nous avons maintenant la derniere version de linux-next checkout
+
+2. Configuration du kernel
+
+> Je reprends mon ancienne config LFS, comme d'hab
+```bash
+make mrproper
+cp -v /boot/config-6.16.1 .config
+yes "" | make oldconfig
+# desactiver le suffixe custom, et s'assurer que le suffixe auto est activé
+scripts/config --set-str LOCALVERSION ""
+scripts/config --enable LOCALVERSION_AUTO || true
+```
+
+Ajouter le driver Virtio GPU (sinon le terminal ne s'affiche pas au boot)
+```bash
+make menuconfig
+# Device Drivers --->
+#   Graphics support --->
+#     [*] Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)
+#     [*] Virtio GPU driver
+```
+> Pas en module, faut que ce soit compilé dans le kernel
+
+
+3. Build le kernel + modules
+
+```bash
+make -j"$(nproc)"
+make modules_install
+```
+
+4. Copier le noyau dans boot
+
+```bash
+KREL="$(make -s kernelrelease)"
+mountpoint -q /boot || mount /boot
+install -m0644 arch/arm64/boot/Image "/boot/Image-${KREL}"
+install -m0644 System.map             "/boot/System.map-${KREL}"
+install -m0644 .config                "/boot/config-${KREL}"
+ln -sf "Image-${KREL}" "/boot/vmlinuz-${KREL}"
+ls -lh /boot | grep "${KREL}"
+file "arch/arm64/boot/Image"
+```
+
+5. Mettre a jour la config de GRUB
+
+Ajouter cette entrée a la fin de /boot/grub/grub.cfg
+
+```
+menuentry "Little-Penguin-06 (Image 6.18.0-rc2-next-20251024)" {
+    linux /vmlinuz-6.18.0-rc2-next-20251024 root=PARTUUID=557f28c8-5006-6f4a-b73d-eb11e6468a1d ro console=tty1 console=ttyAMA0 earlyprintk=efi,keep ignore_loglevel
+}
+```
+> Adapter les valeurs selon votre archi, prenez exemple sur l'entrée Little-Penguin-00
+
+6. Rebooter sur le nouveau kernel
+
+> reboot la VM
+Selectionner le kernel "Little-Penguin-06" dans le menu GRUB
+Verifier avec 
+```bash
+uname -r
+# Doit retourner : 6.18.0-rc2-next-20251024
+```
+> peut changer selon version exacte compilée (date a laquelle vous faite cet assignment)
+
+7. Exporter les fichiers demandés
+
+```bash
+dmesg -T > "/root/kernel-boot.log"
+```
+> Tu connais la procedure en `scp`
+
+</details>
+
+<br>
+
+## Assignment 07
+
+> En cours de réalisation

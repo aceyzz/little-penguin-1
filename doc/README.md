@@ -684,5 +684,56 @@ make test-log > test.log 2>&1
 
 ## Assignment 08
 
+<details>
+<summary>Voir le détail</summary>
+
+#### Objectif
+
+On nous donne un fichier .c d'un module kernel très mal implémenté. Il faut tout d'abord trouver la logique de ce que le gars a voulu implémenter, puis corriger + refactoriser le code pour qu'il soit fonctionnel, propre et respecte le Linux Kernel Coding Style (LKCS).
+
+#### À rendre
+
+- Le code source modifié du module kernel
+
+#### Étapes
+
+Plutot que des étapes, voici le changelog de ce que j'ai pu trouver comme erreurs et les corriger dans le code source :  
+
+-	j’ai commencé par passer le fichier dans `checkpatch.pl`, ça m’a sorti une avalanche d’erreurs de style et de syntaxe, donc première étape : tout rendre compilable et lisible  
+-	j’ai viré la licence bidon “LICENSE” et ajouté le header SPDX, c’est obligatoire pour tout module kernel récent  
+-	j’ai trié et complété les includes : certains manquaient (`mutex`, `string`, `uaccess`) et d’autres étaient mal ordonnés  
+-	j’ai supprimé les commentaires inutiles et le ton “fun” (wtf?)  
+
+A partir de la, j'ai compris que le programme devait créer un device `/dev/reverse` qui inverse la chaîne de caractères écrite dedans, et la restitue inversée lors d’un read. Mais c'est tellement mal foutu, j'ai fait une grosse refacto :  
+
+-	les prototypes des fonctions étaient cassés, j’ai refait a ma sauce les `myfd_read` et `myfd_write`  
+-	j’ai remarqué que le module utilisait une variable globale `str` sans la verouiller (data race), donc j’ai ajouté un mutex global pour protéger les accès concurrents  
+-	j’ai renommé `str` en `buf` et ajouté `buf_len` pour suivre la longueur utile, beaucoup plus propre et clair  
+-	j’ai ajouté un `#define DEVNAME "reverse"` pour ne plus avoir de chaînes en dur  
+-	j’ai complètement revu `myfd_read` : la logique originale inversait bien la chaîne, mais faisait un `kmalloc` énorme et pas de free, donc j’ai réécrit avec un `kmalloc` juste à la bonne taille, un `for` propre, et un `kfree` à la fin  
+-	j’ai ajouté un check sur `!buf_len` pour retourner 0 quand rien à lire, sinon `cat` bloque  
+-	j’ai remplacé `strlen()` par `buf_len`, c’est plus sûr et évite de recalculer sur chaque read  
+-	j’ai ajouté `mutex_lock`/`unlock` autour du read pour éviter de lire pendant qu’un `write` modifie la mémoire  
+-	j’ai revu `myfd_write` : l’ancien faisait un +1 inutile et cassait la terminaison de chaîne, j’ai corrigé en écrivant juste la taille reçue et en ajoutant le '`\0`' à la bonne place  
+-	j’ai limité la copie à `PAGE_SIZE - 1` avec `min()` pour éviter de dépasser le buffer  
+-	j’ai aussi forcé `*ppos = 0` avant l’écriture, sinon plusieurs writes s’enchaînaient mal  
+-	j’ai ajouté `mutex_lock`/`unlock` dans le write aussi, pour être cohérent avec le read  
+-	j’ai corrigé les structs : `myfd_fops` devient `const`, ajout de `.llseek = noop_llseek` pour interdire le `seek` (car ca peut poser probleme avec ce genre de device)  
+-	j’ai réécrit `miscdevice` sans les déférencements de fou furieux `&(*(&(myfd_device)))` (wtf?)  
+-	dans la fonction `init`, j’ai remplacé `return 1` par `return 0`    
+-	j’ai ajouté un vrai `misc_deregister()` dans `exit` pour libérer le device  
+-	j’ai mis la licence à “GPL”, et une description claire du module  
+-	j’ai fini par vérifier avec `checkpatch.pl --strict`, plus aucun warning  
+-	ensuite j’ai testé : `echo bonjour > /dev/reverse` puis `cat /dev/reverse` → `ruojnob`, c'est validé par la street ca  
+-	pour finir j’ai demandé a mon pote (ChatGPT) de me faire une batterie de test a mettre dans mon Makefile pour autocheck le tout, ce sera utile pendant l'eval  
+
+> [Code source corrigé ici](../project/08)
+
+</details>
+
+<br>
+
+## Assignment 09
+
 > En cours de réalisation
 

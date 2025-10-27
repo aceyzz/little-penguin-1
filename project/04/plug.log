@@ -1,11 +1,10 @@
-[Sun Oct 26 08:57:26 2025] usb 3-3: new low-speed USB device number 2 using xhci_hcd
-[Sun Oct 26 08:57:26 2025] input: HAILUCK CO.,LTD USB KEYBOARD as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.0/0003:258A:000C.0004/input/input4
-[Sun Oct 26 08:57:26 2025] hid-generic 0003:258A:000C.0004: input: USB HID v1.10 Keyboard [HAILUCK CO.,LTD USB KEYBOARD] on usb-0000:00:05.0-3/input0
-[Sun Oct 26 08:57:26 2025] input: HAILUCK CO.,LTD USB KEYBOARD Mouse as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0005/input/input5
-[Sun Oct 26 08:57:26 2025] input: HAILUCK CO.,LTD USB KEYBOARD System Control as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0005/input/input6
-[Sun Oct 26 08:57:26 2025] input: HAILUCK CO.,LTD USB KEYBOARD Consumer Control as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0005/input/input7
-[Sun Oct 26 08:57:26 2025] input: HAILUCK CO.,LTD USB KEYBOARD Wireless Radio Control as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0005/input/input8
-[Sun Oct 26 08:57:26 2025] hid-generic 0003:258A:000C.0005: input: USB HID v1.10 Mouse [HAILUCK CO.,LTD USB KEYBOARD] on usb-0000:00:05.0-3/input1
-[Sun Oct 26 08:57:26 2025] hello: loading out-of-tree module taints kernel.
-[Sun Oct 26 08:57:26 2025] Hello world from a04!
-[Sun Oct 26 08:58:08 2025] Cleaning up module from a04.
+[Sun Oct 26 09:11:10 2025] usb 3-3: new low-speed USB device number 4 using xhci_hcd
+[Sun Oct 26 09:11:10 2025] input: HAILUCK CO.,LTD USB KEYBOARD as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.0/0003:258A:000C.0008/input/input14
+[Sun Oct 26 09:11:10 2025] hid-generic 0003:258A:000C.0008: input: USB HID v1.10 Keyboard [HAILUCK CO.,LTD USB KEYBOARD] on usb-0000:00:05.0-3/input0
+[Sun Oct 26 09:11:10 2025] input: HAILUCK CO.,LTD USB KEYBOARD Mouse as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0009/input/input15
+[Sun Oct 26 09:11:10 2025] input: HAILUCK CO.,LTD USB KEYBOARD System Control as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0009/input/input16
+[Sun Oct 26 09:11:10 2025] input: HAILUCK CO.,LTD USB KEYBOARD Consumer Control as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0009/input/input17
+[Sun Oct 26 09:11:10 2025] input: HAILUCK CO.,LTD USB KEYBOARD Wireless Radio Control as /devices/pci0000:00/0000:00:05.0/usb3/3-3/3-3:1.1/0003:258A:000C.0009/input/input18
+[Sun Oct 26 09:11:10 2025] hid-generic 0003:258A:000C.0009: input: USB HID v1.10 Mouse [HAILUCK CO.,LTD USB KEYBOARD] on usb-0000:00:05.0-3/input1
+[Sun Oct 26 09:11:10 2025] Hello world from a04!
+[Sun Oct 26 09:11:10 2025] Cleaning up module from a04.

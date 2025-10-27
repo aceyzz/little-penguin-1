@@ -370,6 +370,23 @@ Mon implémentation corrigée est [ici](../project/03/main.c)
 #   moche.c has no obvious style problems and is ready for submission.
 ```
 
+(optionnel)
+J'ai fais un alias dans mon `~/.bashrc` pour faire une commande `norme` qui lance checkpatch.pl avec les bons flags, utile pour coder tout les modules kernel en respectant le LKCS
+```bash
+vim ~/.bashrc
+# ajouter a la fin du fichier :
+alias norme='/usr/src/linux-linus/scripts/checkpatch.pl --no-tree --strict --show-types --file'
+```
+> adapter le chemin selon votre arborescence
+Puis recharger le bashrc
+```bash
+source ~/.bashrc
+```
+et vous pourrez faire
+```bash
+norme mon_module.c
+```
+
 6. Exporter les fichiers demandés
 
 > Tu connais la procedure en `scp`

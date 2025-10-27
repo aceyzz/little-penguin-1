@@ -1,20 +1,18 @@
+// SPDX-License-Identifier: GPL-2.0-only
 #include <linux/init.h>
 #include <linux/module.h>
-#include <linux/kernel.h>
 
-// pr_info mieux que printk (versionning)
 // merci https://fennecj.github.io/lkmpg/
 
 static int __init hello_init(void)
 {
-    pr_info("Hello world!\n");
-    return (0);
+	pr_info("Hello world!\n");
+	return 0;
 }
 
 static void __exit hello_exit(void)
 {
-    pr_info("Cleaning up module.\n");
-	return ;
+	pr_info("Cleaning up module.\n");
 }
 
 module_init(hello_init);

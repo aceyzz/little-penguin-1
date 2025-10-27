@@ -1,6 +1,4 @@
 ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", \
   ATTR{bInterfaceClass}=="03", ATTR{bInterfaceProtocol}=="01", ATTR{bInterfaceNumber}=="00", \
-  RUN+="/usr/sbin/insmod /root/a04/hello.ko", \
-  RUN+="/usr/sbin/rmmod hello"
-
-# dechargement du module apres exec pour quil se lancer a chaque plug/unplug
+  TEST!="/sys/module/hello", \
+  RUN+="/usr/sbin/insmod /root/a04/hello.ko"

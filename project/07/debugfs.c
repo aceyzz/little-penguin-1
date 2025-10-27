@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0-only
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/fs.h>
@@ -26,13 +27,13 @@ static ssize_t ft_read(struct file *f, char __user *buf, size_t count, loff_t *p
 	size_t remain, n;
 
 	if (*ppos >= LOGIN_LEN)
-		return (0);
+		return 0;
 	remain = LOGIN_LEN - *ppos;
 	n = min(count, remain);
 	if (copy_to_user(buf, LOGIN + *ppos, n))
-		return (-EFAULT);
+		return -EFAULT;
 	*ppos += n;
-	return (n);
+	return n;
 }
 
 static ssize_t ft_write(struct file *f, const char __user *buf, size_t count, loff_t *ppos)
@@ -40,14 +41,14 @@ static ssize_t ft_write(struct file *f, const char __user *buf, size_t count, lo
 	char tmp[LOGIN_LEN + 1];
 
 	if (count != LOGIN_LEN && count != LOGIN_LEN + 1)
-		return (-EINVAL);
+		return -EINVAL;
 	if (copy_from_user(tmp, buf, count))
-		return (-EFAULT);
+		return -EFAULT;
 	if (count == LOGIN_LEN + 1 && tmp[LOGIN_LEN] != '\n')
-		return (-EINVAL);
+		return -EINVAL;
 	if (memcmp(tmp, LOGIN, LOGIN_LEN) != 0)
-		return (-EINVAL);
-	return (count);
+		return -EINVAL;
+	return count;
 }
 
 static const struct file_operations ft_fops = {
@@ -61,6 +62,7 @@ static ssize_t jiffies_read(struct file *f, char __user *buf, size_t count, loff
 {
 	char tmp[32];
 	int len = scnprintf(tmp, sizeof(tmp), "%lu\n", jiffies);
+
 	return simple_read_from_buffer(buf, count, ppos, tmp, len);
 }
 
@@ -76,10 +78,10 @@ static ssize_t foo_read(struct file *f, char __user *buf, size_t count, loff_t *
 	ssize_t ret;
 
 	if (mutex_lock_interruptible(&foo_lock))
-		return (-ERESTARTSYS);
+		return -ERESTARTSYS;
 	ret = simple_read_from_buffer(buf, count, ppos, foo_str, foo_len);
 	mutex_unlock(&foo_lock);
-	return (ret);
+	return ret;
 }
 
 static ssize_t foo_write(struct file *f, const char __user *buf, size_t count, loff_t *ppos)
@@ -88,17 +90,17 @@ static ssize_t foo_write(struct file *f, const char __user *buf, size_t count, l
 	loff_t pos = 0;
 
 	if (count > PAGE_SIZE)
-		return (-EINVAL);
+		return -EINVAL;
 	if (!capable(CAP_SYS_ADMIN))
-		return (-EACCES);
+		return -EACCES;
 	if (mutex_lock_interruptible(&foo_lock))
-		return (-ERESTARTSYS);
+		return -ERESTARTSYS;
 	foo_len = 0;
 	ret = simple_write_to_buffer(foo_str, PAGE_SIZE, &pos, buf, count);
 	if (ret >= 0)
 		foo_len = ret;
 	mutex_unlock(&foo_lock);
-	return (ret);
+	return ret;
 }
 
 static const struct file_operations foo_fops = {
@@ -115,29 +117,28 @@ static int __init ft_init(void)
 	ft_dir = debugfs_create_dir("fortytwo", NULL);
 	if (!ft_dir) {
 		pr_err("debugfs-fortytwo: create_dir failed\n");
-		return (-ENOMEM);
+		return -ENOMEM;
 	}
 	pr_info("debugfs-fortytwo: dir created\n");
 	// creer le fichier id en lecture/ecriture
-	if (!debugfs_create_file("id", 0666, ft_dir, NULL, &ft_fops)) {
+	if (!debugfs_create_file("id", 0644, ft_dir, NULL, &ft_fops)) {
 		pr_err("debugfs-fortytwo: create_file(id) failed\n");
 		debugfs_remove_recursive(ft_dir);
-		return (-ENOMEM);
+		return -ENOMEM;
 	}
 	pr_info("debugfs-fortytwo: id file created\n");
 	// creer le fichier jiffies en lecture seule
 	if (!debugfs_create_file("jiffies", 0444, ft_dir, NULL, &jiffies_fops)) {
 		pr_err("debugfs-fortytwo: create_file(jiffies) failed\n");
 		debugfs_remove_recursive(ft_dir);
-		return (-ENOMEM);
+		return -ENOMEM;
 	}
 	pr_info("debugfs-fortytwo: jiffies file created\n");
 	// init foo
 	foo_str = kmalloc(PAGE_SIZE, GFP_KERNEL);
 	if (!foo_str) {
-		pr_err("debugfs-fortytwo: kmalloc(foo) failed\n");
 		debugfs_remove_recursive(ft_dir);
-		return (-ENOMEM);
+		return -ENOMEM;
 	}
 	pr_info("debugfs-fortytwo: foo buffer allocated\n");
 	// creer le fichier foo en lecture/ecriture
@@ -146,10 +147,10 @@ static int __init ft_init(void)
 		pr_err("debugfs-fortytwo: create_file(foo) failed\n");
 		kfree(foo_str);
 		debugfs_remove_recursive(ft_dir);
-		return (-ENOMEM);
+		return -ENOMEM;
 	}
 	pr_info("debugfs-fortytwo: foo file created\n");
-	return (0);
+	return 0;
 }
 
 static void __exit ft_exit(void)
@@ -158,7 +159,6 @@ static void __exit ft_exit(void)
 	pr_info("debugfs-fortytwo: foo freed memory\n");
 	debugfs_remove_recursive(ft_dir);
 	pr_info("debugfs-fortytwo: dir removed\n");
-	return ;
 }
 
 module_init(ft_init);

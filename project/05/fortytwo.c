@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0-only
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/miscdevice.h>
@@ -17,13 +18,13 @@ static ssize_t ft_read(struct file *f, char __user *buf, size_t count, loff_t *p
 	size_t remain, n;
 
 	if (*ppos >= LOGIN_LEN)
-		return (0);
+		return 0;
 	remain = LOGIN_LEN - *ppos;
 	n = min(count, remain);
 	if (copy_to_user(buf, LOGIN + *ppos, n))
-		return (-EFAULT);
+		return -EFAULT;
 	*ppos += n;
-	return (n);
+	return n;
 }
 
 static ssize_t ft_write(struct file *f, const char __user *buf, size_t count, loff_t *ppos)
@@ -31,14 +32,14 @@ static ssize_t ft_write(struct file *f, const char __user *buf, size_t count, lo
 	char tmp[LOGIN_LEN + 1];
 
 	if (count != LOGIN_LEN && count != LOGIN_LEN + 1)
-		return (-EINVAL);
+		return -EINVAL;
 	if (copy_from_user(tmp, buf, count))
-		return (-EFAULT);
+		return -EFAULT;
 	if (count == LOGIN_LEN + 1 && tmp[LOGIN_LEN] != '\n')
-		return (-EINVAL);
+		return -EINVAL;
 	if (memcmp(tmp, LOGIN, LOGIN_LEN) != 0)
-		return (-EINVAL);
-	return (count);
+		return -EINVAL;
+	return count;
 }
 
 static const struct file_operations ft_fops = {
@@ -60,17 +61,16 @@ static int __init ft_init(void)
 
 	if (result) {
 		pr_err("fortytwo: regsitration KO (%d)\n", result);
-		return (result);
+		return result;
 	}
 	pr_info("fortytwo: registration OK\n");
-	return (0);
+	return 0;
 }
 
 static void __exit ft_exit(void)
 {
 	misc_deregister(&ft_misc);
 	pr_info("fortytwo: deregistration OK\n");
-	return ;
 }
 
 module_init(ft_init);

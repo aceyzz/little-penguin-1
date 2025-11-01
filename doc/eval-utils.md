@@ -62,7 +62,8 @@ perl /usr/src/linux-linus/scripts/checkpatch.pl -no-tree -file --strict main.c
 A keyboard ? What for ?
 > Check le fichier .rules (règle `udev`)
 ```bash
-
+ls -l /etc/udev/rules.d
+# puis faire un cat sur le fichier
 ```
 > Test compliqué car pas de port usb (autre que usb-c, et jai pas de clavier usb-c) sur mon mac, par contre log pour prouver que c'est fonctionnel, parce que jai une docking usb a la maison avec un clavier usb classique dessus
 
